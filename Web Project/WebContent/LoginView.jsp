@@ -10,25 +10,34 @@
 	<%@ include file="Header.jsp"%>
 	
     <%  
+    String success = (String) request.getAttribute("success");
     String error = (String) request.getAttribute("error");
     %>
 	<div align="center">
        <h1>login</h1>
 	   <%  
-	         if(error != null) {
+	         if(success != null) {
 	    %>
 	   <h3>  
-	         <font color="red"><%=error%></font>
+	         <font color="green"><%=success%></font>
 	   </h3>
 	   <%
 	         }
 	   %>
-	   
+	   <%
+	         if(error != null) {
+	   %>
+	   <h3>
+	        <font color="red"><%=error%></font>
+	   </h3>
+	   <%
+	         }
+	   %>
 		<form action="LoginCtl" method="post">
 			<table>
 				<tr>
 					<th>LoginId:</th>
-					<td><input type="text" name="login_id"></td>
+					<td><input type="text" name="loginId"></td>
 				</tr>
 
 				<tr>

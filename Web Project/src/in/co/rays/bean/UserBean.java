@@ -2,25 +2,22 @@ package in.co.rays.bean;
 
 import java.util.Date;
 
-public class UserBean extends BaseBean {
+public class UserBean {
 
+	private int id;
 	private String firstName;
 	private String lastName;
-	private String login_id;
+	private String loginId;
 	private String password;
-	private String confirmPassword;
 	private Date dob;
-	private String mobile_No;
-	private String role_id;
-	private String gender;
 	private String address;
 
-	public String getAddress() {
-		return address;
+	public int getId() {
+		return id;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -39,12 +36,12 @@ public class UserBean extends BaseBean {
 		this.lastName = lastName;
 	}
 
-	public String getLogin_id() {
-		return login_id;
+	public String getLoginId() {
+		return loginId;
 	}
 
-	public void setLogin_id(String login_id) {
-		this.login_id = login_id;
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
 	}
 
 	public String getPassword() {
@@ -55,14 +52,6 @@ public class UserBean extends BaseBean {
 		this.password = password;
 	}
 
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
-	}
-
 	public Date getDob() {
 		return dob;
 	}
@@ -71,28 +60,11 @@ public class UserBean extends BaseBean {
 		this.dob = dob;
 	}
 
-	public String getMobile_No() {
-		return mobile_No;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setMobile_No(String mobile_No) {
-		this.mobile_No = mobile_No;
+	public void setAddress(String address) {
+		this.address = address;
 	}
-
-	public String getRole_id() {
-		return role_id;
-	}
-
-	public void setRole_id(String role_id) {
-		this.role_id = role_id;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
 }

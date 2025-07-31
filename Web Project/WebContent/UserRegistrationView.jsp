@@ -7,8 +7,33 @@
     <title>User Registration</title>
 </head>
 <body>
-    <div align="center">
-        <h1>User Registration</h1>
+     <%@ include file = "Header.jsp"%>
+    <%
+		String success = (String) request.getAttribute("success");
+		String error = (String) request.getAttribute("error");
+	%>
+	<div align="center">
+		<h1>User Registration</h1>
+		<%
+			if (success != null) {
+		%>
+		<h3>
+			<font color="green"><%=success%></font>
+		</h3>
+
+		<%
+			}
+		%>
+		<%
+			if (error != null) {
+		%>
+		<h3>
+			<font color="red"><%=error%></font>
+		</h3>
+
+		<%
+			}
+		%>
         <form action="UserRegistrationCtl" method="post">
             <table>
                 <tr>

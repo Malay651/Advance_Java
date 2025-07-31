@@ -1,4 +1,3 @@
-
 package in.co.rays.ctl;
 
 import java.io.IOException;
@@ -15,12 +14,28 @@ import javax.servlet.http.HttpServletResponse;
 import in.co.rays.bean.UserBean;
 import in.co.rays.model.UserModel;
 
-@WebServlet("/UserRegistrationCtl")
-public class UserRegistrationCtl extends HttpServlet {
+@WebServlet("/UserCtl")
+public class UserCtl extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.sendRedirect("UserRegistrationView.jsp");
+
+		String id = req.getParameter("id");
+
+		UserModel model = new UserModel();
+
+		if (id != null) {
+
+			UserBean bean;
+			try {
+				bean = model.findByPk(Integer.parseInt(id));
+				req.setAttribute("bean", bean);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		RequestDispatcher rd = req.getRequestDispatcher("UserView.jsp");
+		rd.forward(req, resp);
 	}
 
 	@Override
@@ -36,28 +51,29 @@ public class UserRegistrationCtl extends HttpServlet {
 		String address = req.getParameter("address");
 
 		UserBean bean = new UserBean();
+
 		bean.setFirstName(firstName);
 		bean.setLastName(lastName);
 		bean.setLoginId(loginId);
 		bean.setPassword(password);
+
 		try {
 			bean.setDob(sdf.parse(dob));
 		} catch (ParseException e) {
-			e.printStackTrace();
+			// TODO: handle exception
 		}
 		bean.setAddress(address);
 
 		UserModel model = new UserModel();
-
 		try {
 			model.add(bean);
-			req.setAttribute("success", "User added successfully..!!");
+			req.setAttribute("success", "user added successfully..!!");
 		} catch (Exception e) {
 			e.printStackTrace();
-			req.setAttribute("error", "Login Id already exist..!!");
+			req.setAttribute("error", "loginId already exist");
 		}
 
-		RequestDispatcher rd = req.getRequestDispatcher("UserRegistrationView.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("UserView.jsp");
 		rd.forward(req, resp);
 	}
 }
